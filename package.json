@@ -13,6 +13,7 @@
   "dependencies": {
     "@fontsource/ibm-plex-mono": "^4.5.12",
     "@fontsource/twinkle-star": "^4.5.9",
-    "astro": "^1.6.7"
+    "astro": "^1.6.7",
+    "dateformat": "^5.0.3"
   }
 }

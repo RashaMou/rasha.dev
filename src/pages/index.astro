@@ -1,87 +1,84 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout title="rasha.dev">
-	<main>
-		<div class="card">
-			<h1><span class="text-gradient">rasha moumneh</span></h1>
-			<div class="subtitle">
-				<h2>
-					software developer
-				</h2>
-				<h2>
-					philadelphia | beirut
-				</h2>
-			</div>
-			<ul class="links-list">
-				<li><a class="link" href='https://www.github.com/rashamou'>github</a></li>
-				<li><a class="link" href='https://www.twitter.com/rashamoumneh'>twitter</a></li>
-				<li><a class="link" href='https://indieweb.social/@rasha'>mastodon</a></li>
-				<li><a class="link" href='mailto:rasha@fastmail.com'>email</a></li>
-				<!-- <li><a class="link" href='#'>Blog</a></li> -->
-			</ul>
-		</div>
-	</main>
-</Layout>
+<BaseLayout title="rasha.dev">
+  <main>
+    <div class="card">
+      <h1><span class="text-gradient">rasha moumneh</span></h1>
+      <div class="subtitle">
+        <h2>software developer</h2>
+        <h2>philadelphia | beirut</h2>
+      </div>
+      <ul class="links-list">
+        <li>
+          <a class="link" href="https://www.github.com/rashamou">github</a>
+        </li>
+        <li>
+          <a class="link" href="https://www.twitter.com/rashamoumneh">twitter</a
+          >
+        </li>
+        <li>
+          <a class="link" href="https://indieweb.social/@rasha">mastodon</a>
+        </li>
+        <li><a class="link" href="mailto:rasha@fastmail.com">email</a></li>
+        <!-- <li><a class="link" href="/blog">blog</a></li> -->
+      </ul>
+    </div>
+  </main>
+</BaseLayout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-		display: flex;
-	}
-	.card {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translateY(-50%) translateX(-50%);
-		display: flex;
-		flex-direction: column;
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-		width: 50%;
-		line-height: 1.4;
-		padding: 5rem 1.3rem;
-		border-radius: 0.35rem;
-		color: #444;
-		background-color: white;
-		max-width: 700px;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		text-align: center;
-		margin: 0 0 1.25rem 0;
-	}
-	h2 {
-		text-align: center;
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.subtitle {
-		margin-bottom: 1.25rem;
-	}
-	.links-list {
-		list-style: none;
-		display: flex;
-		justify-content: space-evenly;
-		flex-wrap: wrap;
-		padding-left: 0;
-	}
-	.link {
-		text-decoration: none;
-		color: #444;
-	}
-	.link:visited {
-		color: #da62c4;
-	}
+  main {
+    margin: auto;
+    padding: 1.5rem;
+    max-width: 60ch;
+    display: flex;
+  }
+  .card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    line-height: 1.4;
+    padding: 5rem 1.3rem;
+    border-radius: 0.35rem;
+    color: #444;
+    background-color: white;
+    max-width: 700px;
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    text-align: center;
+    margin: 0 0 1.25rem 0;
+  }
+  h2 {
+    text-align: center;
+    margin: 0;
+    font-size: 1.25rem;
+    color: #0e0215;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .subtitle {
+    margin-bottom: 1.25rem;
+  }
+  .links-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-left: 0;
+  }
 </style>

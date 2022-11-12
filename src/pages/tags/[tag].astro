@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+export async function getStaticPaths({}) {
+  const allPosts = await Astro.glob("../posts/*.md");
+  return [
+    { params: { tag: "misc" }, props: { posts: allPosts } },
+    { params: { tag: "tech" }, props: { posts: allPosts } },
+  ];
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+const filteredPosts = posts.filter((post) =>
+  post.frontmatter.tags.includes(tag)
+);
+---
+
+<BaseLayout title={tag}>
+  <div class="tags-wrapper">
+    <a href="/blog">&lt;&lt;</a>
+    <h1>{tag}</h1>
+    <ul>
+      {
+        filteredPosts.map((post) => (
+          <li>
+            <a href={post.url}>{post.frontmatter.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .tags-wrapper {
+    margin: 0 auto;
+    width: 50%;
+  }
+  li {
+    list-style: none;
+  }
+</style>
