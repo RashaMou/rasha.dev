@@ -1,0 +1,55 @@
+---
+import dateformat from "dateformat";
+import BaseLayout from "../layouts/BaseLayout.astro";
+const posts = await Astro.glob("../pages/posts/*.md");
+posts.sort(
+  (a, b) => Date.parse(b.frontmatter.date) - Date.parse(a.frontmatter.date)
+);
+---
+
+<BaseLayout>
+  <div class="blog-wrapper">
+    <a class="back-link" href="/">&lt;&lt;</a>
+    <h1>📝 Blog</h1>
+    <ul class="tag-list">
+      <li class="tag"><a href="/tags/tech">[ tech ]</a></li>
+      <li class="tag"><a href="/tags/misc">[ misc ]</a></li>
+    </ul>
+    <ul>
+      {
+        posts.map((post) => (
+          <li class="blog-post">
+            <a href={post.url}>
+              {post.frontmatter.title}
+              <span class="tag">[ {post.frontmatter.tags} ]</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <style>
+    .blog-wrapper {
+      margin: 0 auto;
+      width: 50%;
+    }
+    .back-link {
+      text-decoration: none;
+      color: #444;
+    }
+    .blog-post {
+      list-style: none;
+    }
+    .tag-list {
+      list-style: none;
+      margin-bottom: 3rem;
+      display: flex;
+    }
+    .tag {
+      font-style: italic;
+      color: white;
+      margin-right: 10px;
+    }
+  </style>
+</BaseLayout>

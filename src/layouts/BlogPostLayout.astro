@@ -1,0 +1,23 @@
+---
+import dateformat from "dateformat";
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+const date = new Date(frontmatter.date);
+const formattedDate = dateformat(date, "mmmm dd, yyyy");
+---
+
+<BaseLayout>
+  <div class="post-wrapper">
+    <a href="/blog">&lt;&lt;</a>
+    <h1>{frontmatter.title}</h1>
+    <div>{formattedDate}</div>
+    <slot />
+  </div>
+</BaseLayout>
+
+<style>
+  .post-wrapper {
+    margin: 0 auto;
+    width: 50%;
+  }
+</style>
