@@ -8,9 +8,9 @@ const formattedDate = dateformat(date, "mmmm dd, yyyy");
 
 <BaseLayout>
   <div class="post-wrapper">
-    <a href="/blog">&lt;&lt;</a>
+    <a href="/blog">👈</a>
     <h1>{frontmatter.title}</h1>
-    <div>{formattedDate}</div>
+    <div class="date">{formattedDate}</div>
     <slot />
   </div>
 </BaseLayout>
@@ -19,5 +19,10 @@ const formattedDate = dateformat(date, "mmmm dd, yyyy");
   .post-wrapper {
     margin: 0 auto;
     width: 50%;
+  }
+  .date {
+    font-style: italic;
+    color: #da62c4;
+    margin-bottom: 2rem;
   }
 </style>

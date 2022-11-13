@@ -44,8 +44,18 @@ img {
 
 a {
   text-decoration: none;
+  color: #da62c4;
 }
 
 a:visited {
-  color: #da62c4;
+  color: #9a47e0;
+}
+
+p,
+li {
+  line-height: 1.5rem;
+}
+
+li {
+  padding: 0.3rem;
 }

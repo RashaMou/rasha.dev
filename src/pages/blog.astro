@@ -9,12 +9,17 @@ posts.sort(
 
 <BaseLayout>
   <div class="blog-wrapper">
-    <a class="back-link" href="/">&lt;&lt;</a>
+    <a class="back-link" href="/">👈</a>
     <h1>📝 Blog</h1>
     <ul class="tag-list">
       <li class="tag"><a href="/tags/tech">[ tech ]</a></li>
       <li class="tag"><a href="/tags/misc">[ misc ]</a></li>
     </ul>
+    <div class="blurb">
+      🌴 Hi, welcome to my attempt at a blog! I'm planning to mainly post about
+      technical things I am learning or that I find interesting, but also this
+      blog is a bit of an experiment, so we'll see how it goes!
+    </div>
     <ul>
       {
         posts.map((post) => (
@@ -50,6 +55,9 @@ posts.sort(
       font-style: italic;
       color: white;
       margin-right: 10px;
+    }
+    .blurb {
+      margin-bottom: 3rem;
     }
   </style>
 </BaseLayout>
