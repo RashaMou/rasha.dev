@@ -60,7 +60,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   }
   h2 {
     text-align: center;
-    margin: 0;
+    margin: 0 0 5px 0;
     font-size: 1.25rem;
     color: #0e0215;
   }
@@ -80,5 +80,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     justify-content: space-evenly;
     flex-wrap: wrap;
     padding-left: 0;
+  }
+  @media (max-width: 450px) {
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1rem;
+    }
+    li {
+      font-size: 0.85rem;
+    }
+    .card {
+      width: 80%;
+    }
   }
 </style>
