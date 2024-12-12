@@ -11,9 +11,13 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/netlify": "^6.0.0",
     "@fontsource/ibm-plex-mono": "^4.5.12",
     "@fontsource/twinkle-star": "^4.5.9",
-    "astro": "^1.6.7",
+    "astro": "^5.0.5",
     "dateformat": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2"
   }
 }
