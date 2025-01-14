@@ -3,7 +3,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 export const GET: APIRoute = async () => {
-  const filePath = path.resolve("./public/Rasha_Moumneh_Resume_2024.pdf");
+  const filePath = path.resolve("./public/RashaMoumneh2024.pdf");
   const file = await fs.promises.readFile(filePath);
 
   return new Response(file, {
