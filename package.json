@@ -14,7 +14,7 @@
     "@astrojs/netlify": "^6.0.0",
     "@fontsource/ibm-plex-mono": "^4.5.12",
     "@fontsource/twinkle-star": "^4.5.9",
-    "astro": "^5.0.5",
+    "astro": "^5.18.1",
     "dateformat": "^5.0.3"
   },
   "devDependencies": {
