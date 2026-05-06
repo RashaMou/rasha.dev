@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahra — Arab & SWANA Philadelphia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..700,30..70&family=Reem+Kufi+Fun:wght@500&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f3ed;
+    --bg-alt: #efe8dc;
+    --ink: #2a241d;
+    --ink-soft: #5c5044;
+    --ink-faint: #8a7d6e;
+    --accent: #8b3a2f;
+    --accent-soft: #c97a5f;
+    --line: #d9cfbf;
+    --card: #fffdf8;
+    --green: #4a6b3a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 130px; }
+  body {
+    font-family: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+    font-variation-settings: "opsz" 14, "SOFT" 30;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 16px;
+  }
+  .sans { font-family: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif; }
+  /* Arabic inline text (not display logo) uses IBM Plex Sans Arabic */
+  .ar-inline {
+    font-family: "IBM Plex Sans Arabic", "Fraunces", ui-serif, sans-serif;
+  }
+  /* Display headings get larger optical sizing and slightly more softness */
+  h1, h2, h3 {
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+
+  /* Header */
+  header {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .logo {
+    font-family: "Fraunces", ui-serif, Georgia, serif;
+    font-size: 1.7rem;
+    font-weight: 500;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    letter-spacing: 0;
+  }
+  .logo span.divider {
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .logo span.ar {
+    font-family: "Reem Kufi Fun", sans-serif;
+    font-weight: 500;
+    font-size: 1.7rem;
+  }
+  .logo-sub {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 2px;
+  }
+  nav {
+    display: flex;
+    gap: 28px;
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 14px;
+  }
+  nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+  nav a:hover { border-bottom-color: var(--accent); color: var(--ink); }
+  nav a.active { color: var(--ink); border-bottom-color: var(--accent); }
+
+  /* Hamburger button — hidden on desktop */
+  .menu-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--line);
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .menu-toggle svg { display: block; }
+
+  /* Mobile menu drawer */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 80%;
+    max-width: 320px;
+    background: var(--bg);
+    border-left: 1px solid var(--line);
+    z-index: 100;
+    padding: 24px 28px;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    transform: translateX(100%);
+    transition: transform 0.2s ease;
+    overflow-y: auto;
+  }
+  .mobile-menu.open {
+    transform: translateX(0);
+  }
+  .mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(42, 36, 29, 0.4);
+    z-index: 99;
+  }
+  .mobile-menu-overlay.open { display: block; }
+  .mobile-menu .close-btn {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: var(--ink-soft);
+    cursor: pointer;
+    align-self: flex-end;
+    padding: 4px 8px;
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+  .mobile-menu a {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 16px;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-menu a.active { color: var(--accent); }
+
+  /* Hero */
+  .hero {
+    padding: 64px 32px 40px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .hero h1 {
+    font-size: 48px;
+    line-height: 1.15;
+    letter-spacing: 0;
+    max-width: 720px;
+    margin-bottom: 16px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 580px;
+    margin-bottom: 32px;
+  }
+
+  /* Search */
+  .search-bar {
+    display: flex;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    max-width: 720px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  }
+  .search-bar input {
+    flex: 1;
+    border: none;
+    padding: 16px 20px;
+    font-family: inherit;
+    font-size: 16px;
+    background: transparent;
+    color: var(--ink);
+    outline: none;
+  }
+  .search-bar input::placeholder { color: var(--ink-faint); }
+  .search-bar button {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 0 28px;
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+  .search-hint {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-top: 10px;
+    margin-left: 4px;
+  }
+  .search-hint .example-term {
+    background: var(--bg-alt);
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-family: "DM Sans", "IBM Plex Sans Arabic", ui-monospace, monospace;
+    font-size: 12px;
+  }
+
+  /* Quick filters */
+  .quick-filters {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+  }
+  .chip {
+    background: transparent;
+    border: 1px solid var(--line);
+    padding: 7px 14px;
+    border-radius: 999px;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .chip.more-toggle {
+    display: none;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .chip.more-toggle:hover { color: var(--accent); }
+
+  /* Section spacing */
+  .section-block {
+    max-width: 1280px;
+    margin: 48px auto 0;
+    padding: 0 32px;
+  }
+  .events-section {
+    max-width: 1280px;
+    margin: 64px auto 0;
+    padding: 0 32px;
+  }
+  .events-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  /* Map */
+  .map-section h2, .events-section h2, .archive-section h2 {
+    font-size: 22px;
+    margin-bottom: 4px;
+    letter-spacing: 0;
+  }
+  .section-sub {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-bottom: 16px;
+  }
+  .map {
+    aspect-ratio: 4/3;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .map svg { width: 100%; height: 100%; display: block; }
+  .map-pin {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--bg);
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 10px;
+    color: var(--bg);
+    font-weight: 600;
+  }
+  .pin-food { background: var(--accent); }
+  .pin-faith { background: var(--green); }
+  .pin-culture { background: #c08a2e; }
+  .pin-services { background: #5a6f8a; }
+
+  .map-legend {
+    margin-top: 12px;
+    display: flex;
+    gap: 16px;
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+    flex-wrap: wrap;
+  }
+  .legend-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  /* Events */
+  .event-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 18px;
+    align-items: start;
+  }
+  .event-date {
+    text-align: center;
+    border-right: 1px solid var(--line);
+    padding-right: 18px;
+  }
+  .event-date .month {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+  .event-date .day {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1;
+    margin-top: 2px;
+  }
+  .event-date .dow {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 10px;
+    color: var(--ink-faint);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .event-body h3 {
+    font-size: 17px;
+    margin-bottom: 4px;
+    letter-spacing: 0;
+  }
+  .event-meta {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .event-meta .dot { color: var(--ink-faint); margin: 0 6px; }
+  .tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .tag {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    background: var(--bg-alt);
+    color: var(--ink-soft);
+    padding: 3px 9px;
+    border-radius: 3px;
+  }
+  .tag.ar { font-family: "IBM Plex Sans Arabic", sans-serif; font-size: 12px; }
+  .event-source {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-align: right;
+    line-height: 1.4;
+  }
+  .verified {
+    color: var(--green);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-top: 2px;
+  }
+  .unverified {
+    color: #b07a2a;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* Campaigns */
+  .campaigns {
+    max-width: 1280px;
+    margin: 64px auto 0;
+    padding: 0 32px;
+  }
+  .campaigns h2 {
+    font-size: 22px;
+    margin-bottom: 4px;
+    letter-spacing: 0;
+  }
+  .campaigns-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+  }
+  .campaign {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .campaign.urgent {
+    border-left: 3px solid var(--accent);
+  }
+  .campaign-label {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .campaign-label .pulse {
+    width: 7px;
+    height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .campaign h3 {
+    font-size: 19px;
+    letter-spacing: 0;
+    margin-bottom: 8px;
+  }
+  .campaign p {
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin-bottom: 16px;
+    flex: 1;
+  }
+  .campaign-progress {
+    margin-bottom: 14px;
+  }
+  .progress-bar {
+    height: 4px;
+    background: var(--bg-alt);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+  }
+  .progress-meta {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 12px;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+  }
+  .campaign-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .campaign-link {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+  }
+  .campaign-organizer {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    color: var(--ink-faint);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* Places list (under the map) */
+  .places-list {
+    margin-top: 32px;
+  }
+  .places-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+  }
+  .places-list-header h3 {
+    font-size: 18px;
+    letter-spacing: 0;
+  }
+  .places-list-header .filter-note {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+  .places-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .place-row {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 14px;
+    align-items: center;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .place-row:hover { border-color: var(--accent); }
+  .place-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg);
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .place-icon.food { background: var(--accent); }
+  .place-icon.faith { background: var(--green); }
+  .place-icon.culture { background: #c08a2e; }
+  .place-icon.services { background: #5a6f8a; }
+  .place-icon.grocery { background: var(--accent-soft); }
+  .place-info h4 {
+    font-size: 15px;
+    letter-spacing: 0;
+    margin-bottom: 2px;
+  }
+  .place-info .meta {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    color: var(--ink-faint);
+  }
+  .place-info .ar {
+    font-family: "IBM Plex Sans Arabic", "Fraunces", sans-serif;
+    color: var(--ink-soft);
+    font-size: 13px;
+    margin-left: 6px;
+  }
+  .place-mini-tags {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .mini-tag {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 10px;
+    color: var(--ink-soft);
+    background: var(--bg-alt);
+    padding: 3px 7px;
+    border-radius: 3px;
+  }
+  .mini-tag.ar {
+    font-family: "IBM Plex Sans Arabic", sans-serif;
+    font-size: 11px;
+  }
+  .see-all {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .see-all a {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 14px;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    padding: 10px 22px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+  .see-all a:hover { border-color: var(--accent); }
+
+  /* Featured listings */
+  .featured {
+    max-width: 1280px;
+    margin: 64px auto 0;
+    padding: 0 32px;
+  }
+  .featured h2 {
+    font-size: 22px;
+    margin-bottom: 4px;
+    letter-spacing: 0;
+  }
+  .featured-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .listing {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .listing-img {
+    aspect-ratio: 16/10;
+    background: var(--bg-alt);
+    position: relative;
+    overflow: hidden;
+  }
+  .listing-img svg { width: 100%; height: 100%; }
+  .listing-body {
+    padding: 18px 20px;
+  }
+  .listing-cat {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .listing h3 {
+    font-size: 19px;
+    margin-bottom: 2px;
+    letter-spacing: 0;
+  }
+  .listing-ar {
+    font-family: "IBM Plex Sans Arabic", "Fraunces", sans-serif;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+    direction: rtl;
+    text-align: left;
+  }
+  .listing-meta {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-bottom: 12px;
+  }
+  .listing-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  /* Archive teaser */
+  .archive-section {
+    max-width: 1280px;
+    margin: 72px auto 0;
+    padding: 48px 32px;
+    background: var(--bg-alt);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .archive-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 1216px;
+    margin: 0 auto;
+  }
+  .archive-text h2 { font-size: 28px; letter-spacing: 0; margin-bottom: 12px; }
+  .archive-text p { color: var(--ink-soft); margin-bottom: 16px; }
+  .archive-text a {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px;
+  }
+  .archive-images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .archive-img {
+    aspect-ratio: 1;
+    background: var(--card);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    position: relative;
+  }
+  .archive-img svg { width: 100%; height: 100%; }
+  .archive-img .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(42, 36, 29, 0.85);
+    color: var(--bg);
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 10px;
+    padding: 6px 8px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Newsletter */
+  .newsletter {
+    max-width: 1280px;
+    margin: 64px auto 0;
+    padding: 48px 32px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .newsletter-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .newsletter h2 {
+    font-size: 24px;
+    letter-spacing: 0;
+    margin-bottom: 8px;
+  }
+  .newsletter p {
+    color: var(--ink-soft);
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+  .newsletter-meta {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .newsletter-input {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 14px 16px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    border-radius: 3px;
+    outline: none;
+  }
+  .newsletter-input:focus { border-color: var(--accent); }
+  .newsletter-input::placeholder { color: var(--ink-faint); }
+  .newsletter-submit {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 14px;
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .newsletter-fineprint {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-align: center;
+  }
+
+  /* Contribute */
+  .contribute {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 56px 32px;
+    text-align: center;
+  }
+  .contribute h2 { font-size: 26px; margin-bottom: 8px; letter-spacing: 0; }
+  .contribute p {
+    color: var(--ink-soft);
+    max-width: 540px;
+    margin: 0 auto 24px;
+  }
+  .contribute-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 14px;
+    padding: 12px 22px;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    background: transparent;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px;
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-align: center;
+    background: var(--bg-alt);
+  }
+  footer p { margin-bottom: 6px; }
+  footer a { color: var(--ink-soft); text-decoration: none; margin: 0 8px; }
+
+  @media (max-width: 900px) {
+    .featured-grid, .archive-grid, .campaigns-grid, .places-grid, .events-grid, .newsletter-inner { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 30px; line-height: 1.15; }
+    .hero-sub { font-size: 16px; }
+    .hero { padding: 32px 20px 20px; }
+    nav { display: none; }
+    .menu-toggle { display: block; }
+    .mobile-menu { display: flex; }
+    header { padding: 14px 20px; }
+    .featured, .contribute, .events-section, .section-block, .campaigns, .newsletter { padding-left: 20px; padding-right: 20px; }
+    .archive-section { padding: 32px 20px; }
+    .featured { margin-top: 48px; }
+    .campaigns { margin-top: 48px; }
+    .events-section { margin-top: 48px; }
+    .section-block { margin-top: 32px; }
+
+    /* Event card stacks on mobile */
+    .event-card {
+      grid-template-columns: 56px 1fr;
+      gap: 14px;
+      padding: 14px 16px;
+    }
+    .event-source {
+      grid-column: 1 / -1;
+      text-align: left;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+    }
+    .event-date { padding-right: 14px; }
+    .event-date .day { font-size: 24px; }
+
+    /* Place row tightens */
+    .place-row {
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+    }
+    .place-mini-tags {
+      grid-column: 1 / -1;
+      flex-wrap: wrap;
+    }
+
+    /* Search bar stacks */
+    .search-bar { flex-direction: column; }
+    .search-bar button { padding: 14px; }
+
+    /* Quick filters: hide secondary chips, show More toggle */
+    .quick-filters {
+      flex-wrap: wrap;
+    }
+    .quick-filters .chip.secondary { display: none; }
+    .quick-filters.expanded .chip.secondary { display: inline-block; }
+    .quick-filters .chip.more-toggle { display: inline-block; }
+
+    /* Hide page-level scroll when drawer open */
+    body.menu-open { overflow: hidden; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 26px; }
+    .logo { font-size: 18px; }
+    .logo-sub { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">Sahra <span class="divider">·</span> <span class="ar">سهرة</span></div>
+    <div class="logo-sub">Arab & SWANA Philadelphia</div>
+  </div>
+  <nav>
+    <a href="#" class="active">Home</a>
+    <a href="/places">Places</a>
+    <a href="/events">Events</a>
+    <a href="/campaigns">Campaigns</a>
+    <a href="/archive">Archive</a>
+    <a href="/submit">Submit</a>
+    <a href="/about">About</a>
+  </nav>
+  <button class="menu-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open'); document.getElementById('mobileMenuOverlay').classList.add('open'); document.body.classList.add('menu-open');">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+</header>
+
+<div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="document.getElementById('mobileMenu').classList.remove('open'); this.classList.remove('open'); document.body.classList.remove('menu-open');"></div>
+
+<aside class="mobile-menu" id="mobileMenu">
+  <button class="close-btn" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open'); document.getElementById('mobileMenuOverlay').classList.remove('open'); document.body.classList.remove('menu-open');">×</button>
+
+  <a href="#" class="active">Home</a>
+  <a href="/places">Places</a>
+  <a href="/events">Events</a>
+  <a href="/campaigns">Campaigns</a>
+  <a href="/archive">Archive</a>
+  <a href="/submit">Submit</a>
+  <a href="/about">About</a>
+</aside>
+
+<section class="hero">
+  <h1>The places, people, and gatherings that make up <em>Arab Philly</em>.</h1>
+  <p class="hero-sub">A community-built guide to restaurants, organizations, cultural spaces, and events across the Greater Philadelphia area. Maintained by neighbors, not algorithms.</p>
+
+  <div class="search-bar">
+    <input type="text" placeholder="Search — try 'late-night tea Northeast' or 'مطاعم فلسطينية'" />
+    <button>Search</button>
+  </div>
+  <div class="search-hint">
+    Search works in English, Arabic, and transliteration · try <span class="example-term">shawarma</span>, <span class="example-term">شاورما</span>, or <span class="example-term">Fairuz</span>
+  </div>
+
+  <div class="quick-filters" id="quickFilters">
+    <button class="chip active">All</button>
+    <button class="chip">Open now</button>
+    <button class="chip">Restaurants & cafes</button>
+    <button class="chip">Art & culture</button>
+    <button class="chip secondary">Arabic spoken</button>
+    <button class="chip secondary">Family-friendly</button>
+    <button class="chip secondary">Late-night</button>
+    <button class="chip more-toggle" id="moreFiltersBtn" onclick="document.getElementById('quickFilters').classList.toggle('expanded'); this.textContent = document.getElementById('quickFilters').classList.contains('expanded') ? 'Less filters ▴' : 'More filters ▾';">More filters ▾</button>
+  </div>
+</section>
+
+<section class="section-block" id="places">
+
+  <div class="map-section">
+    <h2>Places</h2>
+    <p class="section-sub">142 places across Greater Philadelphia · last updated 2 days ago</p>
+    <div class="map">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="300" fill="#efe8dc"/>
+        <!-- Schuylkill river -->
+        <path d="M 50 0 Q 80 80 120 140 Q 140 200 100 300" stroke="#c8d4d8" stroke-width="14" fill="none" opacity="0.6"/>
+        <!-- Delaware river -->
+        <path d="M 320 0 Q 340 100 350 200 Q 355 270 380 300" stroke="#c8d4d8" stroke-width="16" fill="none" opacity="0.6"/>
+        <!-- Roads -->
+        <path d="M 0 150 L 400 150" stroke="#d9cfbf" stroke-width="1.5" fill="none"/>
+        <path d="M 200 0 L 200 300" stroke="#d9cfbf" stroke-width="1.5" fill="none"/>
+        <path d="M 0 80 L 400 220" stroke="#d9cfbf" stroke-width="1" fill="none" opacity="0.6"/>
+        <path d="M 0 230 L 400 60" stroke="#d9cfbf" stroke-width="1" fill="none" opacity="0.6"/>
+        <!-- neighborhood labels -->
+        <text x="280" y="80" font-family="DM Sans, ui-sans-serif" font-size="9" fill="#8a7d6e" letter-spacing="1">NORTHEAST</text>
+        <text x="160" y="180" font-family="DM Sans, ui-sans-serif" font-size="9" fill="#8a7d6e" letter-spacing="1">CENTER CITY</text>
+        <text x="170" y="270" font-family="DM Sans, ui-sans-serif" font-size="9" fill="#8a7d6e" letter-spacing="1">SOUTH PHILLY</text>
+        <text x="40" y="160" font-family="DM Sans, ui-sans-serif" font-size="9" fill="#8a7d6e" letter-spacing="1">WEST PHILLY</text>
+      </svg>
+      <!-- Pins clustered in NE Philly -->
+      <div class="map-pin pin-food" style="top: 28%; left: 70%;">7</div>
+      <div class="map-pin pin-food" style="top: 32%; left: 76%;"></div>
+      <div class="map-pin pin-faith" style="top: 24%; left: 72%;"></div>
+      <div class="map-pin pin-culture" style="top: 36%; left: 78%;"></div>
+      <div class="map-pin pin-services" style="top: 30%; left: 82%;"></div>
+      <!-- Center city -->
+      <div class="map-pin pin-food" style="top: 58%; left: 48%;">3</div>
+      <div class="map-pin pin-culture" style="top: 54%; left: 52%;"></div>
+      <!-- South Philly -->
+      <div class="map-pin pin-food" style="top: 78%; left: 54%;"></div>
+      <div class="map-pin pin-faith" style="top: 82%; left: 46%;"></div>
+      <!-- West Philly / Upper Darby -->
+      <div class="map-pin pin-food" style="top: 56%; left: 18%;">5</div>
+      <div class="map-pin pin-faith" style="top: 52%; left: 22%;"></div>
+      <div class="map-pin pin-culture" style="top: 60%; left: 14%;"></div>
+    </div>
+    <div class="map-legend">
+      <span><span class="legend-dot" style="background: #8b3a2f;"></span>Food & grocery</span>
+      <span><span class="legend-dot" style="background: #4a6b3a;"></span>Mosques & churches</span>
+      <span><span class="legend-dot" style="background: #c08a2e;"></span>Cultural spaces</span>
+      <span><span class="legend-dot" style="background: #5a6f8a;"></span>Services</span>
+    </div>
+  </div>
+
+  <div class="places-list">
+    <div class="places-list-header">
+      <h3>Recently updated places</h3>
+      <span class="filter-note">Showing 8 of 142 · filters above apply</span>
+    </div>
+
+    <div class="places-grid">
+
+      <div class="place-row">
+        <div class="place-icon food">CAFE</div>
+        <div class="place-info">
+          <h4>Manakeesh Café Bakery <span class="ar">مناقيش</span></h4>
+          <div class="meta">West Philly · open until 10pm</div>
+        </div>
+        <div class="place-mini-tags">
+          <span class="mini-tag">Halal</span>
+          <span class="mini-tag ar">عربي</span>
+        </div>
+      </div>
+
+      <div class="place-row">
+        <div class="place-icon faith">MSJD</div>
+        <div class="place-info">
+          <h4>Al-Aqsa Islamic Society <span class="ar">جمعية الأقصى</span></h4>
+          <div class="meta">North Philly · 5 daily prayers</div>
+        </div>
+        <div class="place-mini-tags">
+          <span class="mini-tag">Religious</span>
+        </div>
+      </div>
+
+      <div class="place-row">
+        <div class="place-icon culture">CULT</div>
+        <div class="place-info">
+          <h4>Al-Bustan Seeds of Culture <span class="ar">البستان</span></h4>
+          <div class="meta">West Philly · classes & performances</div>
+        </div>
+        <div class="place-mini-tags">
+          <span class="mini-tag">Kids programs</span>
+        </div>
+      </div>
+
+      <div class="place-row">
+        <div class="place-icon grocery">GROC</div>
+        <div class="place-info">
+          <h4>Makkah Market <span class="ar">سوق مكة</span></h4>
+          <div class="meta">South Philly · open 8am–10pm</div>
+        </div>
+        <div class="place-mini-tags">
+          <span class="mini-tag">Halal butcher</span>
+          <span class="mini-tag ar">عربي</span>
+        </div>
+      </div>
+
+      <div class="place-row">
+        <div class="place-icon food">REST</div>
+        <div class="place-info">
+          <h4>Bitar's <span class="ar">بيطار</span></h4>
+          <div class="meta">South Philly · since 1973</div>
+        </div>
+        <div class="place-mini-tags">
+          <span class="mini-tag">Family-run</span>
+        </div>
+      </div>
+
+      <div class="place-row">
+        <div class="place-icon services">SERV</div>
+        <div class="place-info">
+          <h4>Dr. Layla Habib, Therapist</h4>
+          <div class="meta">Center City · accepting new patients</div>
+        </div>
+        <div class="place-mini-tags">
+          <span class="mini-tag ar">عربي</span>
+          <span class="mini-tag">Sliding scale</span>
+        </div>
+      </div>
+
+      <div class="place-row">
+        <div class="place-icon food">CAFE</div>
+        <div class="place-info">
+          <h4>Cleopatra Hookah Lounge <span class="ar">كليوباترا</span></h4>
+          <div class="meta">Northeast Philly · open until 2am</div>
+        </div>
+        <div class="place-mini-tags">
+          <span class="mini-tag">Late-night</span>
+        </div>
+      </div>
+
+      <div class="place-row">
+        <div class="place-icon faith">CHRC</div>
+        <div class="place-info">
+          <h4>St. Maron Maronite Church <span class="ar">مار مارون</span></h4>
+          <div class="meta">South Philly · Arabic Mass Sundays</div>
+        </div>
+        <div class="place-mini-tags">
+          <span class="mini-tag">Maronite</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="see-all">
+      <a href="/places">Browse all 142 places →</a>
+    </div>
+  </div>
+
+</section>
+
+<section class="events-section" id="events">
+  <h2>This week</h2>
+  <p class="section-sub">14 upcoming events · 9 verified by organizers · 5 pending review</p>
+
+  <div class="events-grid">
+
+    <div class="event-card">
+      <div class="event-date">
+        <div class="month">May</div>
+        <div class="day">09</div>
+        <div class="dow">Sat</div>
+      </div>
+      <div class="event-body">
+        <h3>Dabke night with Firqat Al-Sham</h3>
+        <div class="event-meta">7:30 PM <span class="dot">·</span> Al-Bustan Seeds of Culture <span class="dot">·</span> Free, donations welcome</div>
+        <div class="tags">
+          <span class="tag">Family-friendly</span>
+          <span class="tag">All ages</span>
+          <span class="tag">Live music</span>
+          <span class="tag ar">دبكة</span>
+        </div>
+      </div>
+      <div class="event-source">
+        from @albustan_philly<br>
+        <span class="verified">✓ verified</span>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-date">
+        <div class="month">May</div>
+        <div class="day">11</div>
+        <div class="dow">Mon</div>
+      </div>
+      <div class="event-body">
+        <h3>Arabic poetry open mic — أمسية شعرية</h3>
+        <div class="event-meta">8:00 PM <span class="dot">·</span> Manakeesh Café, NE Philly <span class="dot">·</span> $5 suggested</div>
+        <div class="tags">
+          <span class="tag">Arabic + English</span>
+          <span class="tag">Open mic</span>
+          <span class="tag">18+</span>
+        </div>
+      </div>
+      <div class="event-source">
+        from flyer (Instagram)<br>
+        <span class="unverified">⚠ unverified</span>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-date">
+        <div class="month">May</div>
+        <div class="day">14</div>
+        <div class="dow">Thu</div>
+      </div>
+      <div class="event-body">
+        <h3>Gaza relief fundraiser dinner</h3>
+        <div class="event-meta">6:30 PM <span class="dot">·</span> Al-Aqsa Islamic Society <span class="dot">·</span> $40 ticket</div>
+        <div class="tags">
+          <span class="tag">Fundraiser</span>
+          <span class="tag">Halal</span>
+          <span class="tag">Family-friendly</span>
+        </div>
+      </div>
+      <div class="event-source">
+        submitted by community<br>
+        <span class="verified">✓ verified</span>
+      </div>
+    </div>
+
+    <div class="event-card">
+      <div class="event-date">
+        <div class="month">May</div>
+        <div class="day">16</div>
+        <div class="dow">Sat</div>
+      </div>
+      <div class="event-body">
+        <h3>Film screening: <em>Wajib</em> (2017, Annemarie Jacir)</h3>
+        <div class="event-meta">7:00 PM <span class="dot">·</span> Lightbox Film Center <span class="dot">·</span> $12</div>
+        <div class="tags">
+          <span class="tag">Palestinian cinema</span>
+          <span class="tag">Subtitled</span>
+          <span class="tag">Q&A after</span>
+        </div>
+      </div>
+      <div class="event-source">
+        from venue calendar<br>
+        <span class="verified">✓ verified</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="see-all">
+    <a href="/events">See all upcoming events →</a>
+  </div>
+</section>
+
+<section class="campaigns" id="campaigns">
+  <h2>Community campaigns</h2>
+  <p class="section-sub">Mutual aid, fundraisers, petitions, and calls to action from organizers across the community</p>
+
+  <div class="campaigns-grid">
+
+    <div class="campaign urgent">
+      <div class="campaign-label"><span class="pulse"></span>Urgent · Mutual aid</div>
+      <h3>Medical fund for the Hammoudeh family</h3>
+      <p>Organized by neighbors after a sudden hospitalization. Funds go directly to the family for medical bills and rent through May.</p>
+      <div class="campaign-progress">
+        <div class="progress-bar"><div class="progress-fill" style="width: 64%;"></div></div>
+        <div class="progress-meta">
+          <span>$12,800 raised of $20,000</span>
+          <span>11 days left</span>
+        </div>
+      </div>
+      <div class="campaign-actions">
+        <a href="#" class="campaign-link">Contribute →</a>
+        <a href="#" class="campaign-link">Share</a>
+      </div>
+      <div class="campaign-organizer">Organized by Al-Aqsa Mosque sisters' committee · verified</div>
+    </div>
+
+    <div class="campaign">
+      <div class="campaign-label">Boycott / advocacy</div>
+      <h3>Save the South Philly Halal Market</h3>
+      <p>The 8th St. market faces displacement from a redevelopment plan. Sign the petition and attend the May 19 zoning hearing.</p>
+      <div class="campaign-actions">
+        <a href="#" class="campaign-link">Sign petition →</a>
+      </div>
+      <div class="campaign-organizer">Organized by Friends of 8th Street · verified</div>
+    </div>
+
+    <div class="campaign">
+      <div class="campaign-label">Donation drive</div>
+      <h3>Ramadan iftar volunteers (next year)</h3>
+      <p>Sign up early to host or cook for community iftars in Ramadan 2027. Coordinated across 4 mosques.</p>
+      <div class="campaign-actions">
+        <a href="#" class="campaign-link">Sign up →</a>
+      </div>
+      <div class="campaign-organizer">Coordinated by Philly Muslim Council</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="featured" id="featured">
+  <h2>Recently added & loved</h2>
+  <p class="section-sub">Places we've checked on this month</p>
+
+  <div class="featured-grid">
+
+    <div class="listing">
+      <div class="listing-img">
+        <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="250" fill="#c97a5f"/>
+          <rect x="40" y="80" width="320" height="140" fill="#8b3a2f" opacity="0.4"/>
+          <circle cx="200" cy="125" r="38" fill="#f7f3ed" opacity="0.85"/>
+          <text x="200" y="135" font-family="serif" font-size="22" fill="#2a241d" text-anchor="middle" font-style="italic">manakeesh</text>
+          <rect x="0" y="200" width="400" height="50" fill="#2a241d" opacity="0.15"/>
+        </svg>
+      </div>
+      <div class="listing-body">
+        <div class="listing-cat">Café · Bakery</div>
+        <h3>Manakeesh Café Bakery</h3>
+        <div class="listing-ar">مناقيش</div>
+        <div class="listing-meta">4420 Walnut St, West Philly · open 7am–10pm</div>
+        <div class="listing-tags">
+          <span class="tag">Arabic spoken</span>
+          <span class="tag">Halal</span>
+          <span class="tag">Late-night tea</span>
+          <span class="tag">Family-friendly</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="listing">
+      <div class="listing-img">
+        <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="250" fill="#4a6b3a"/>
+          <path d="M 200 40 L 200 80 M 175 60 L 225 60" stroke="#f7f3ed" stroke-width="3" fill="none" opacity="0.7"/>
+          <path d="M 130 130 Q 200 80 270 130 L 270 200 L 130 200 Z" fill="#f7f3ed" opacity="0.9"/>
+          <rect x="190" y="160" width="20" height="40" fill="#4a6b3a"/>
+          <circle cx="200" cy="140" r="12" fill="#4a6b3a"/>
+          <text x="200" y="230" font-family="serif" font-size="13" fill="#f7f3ed" text-anchor="middle">Al-Aqsa Islamic Society</text>
+        </svg>
+      </div>
+      <div class="listing-body">
+        <div class="listing-cat">Mosque</div>
+        <h3>Al-Aqsa Islamic Society</h3>
+        <div class="listing-ar">جمعية الأقصى الإسلامية</div>
+        <div class="listing-meta">1501 Germantown Ave · 5 daily prayers · Friday khutbah 1:15pm</div>
+        <div class="listing-tags">
+          <span class="tag">Women's prayer space</span>
+          <span class="tag">Sunday school</span>
+          <span class="tag">Arabic + English khutbah</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="listing">
+      <div class="listing-img">
+        <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="250" fill="#c08a2e"/>
+          <rect x="60" y="60" width="280" height="160" fill="#2a241d" opacity="0.2"/>
+          <rect x="80" y="90" width="40" height="100" fill="#f7f3ed" opacity="0.6"/>
+          <rect x="130" y="90" width="40" height="100" fill="#f7f3ed" opacity="0.7"/>
+          <rect x="180" y="90" width="40" height="100" fill="#f7f3ed" opacity="0.5"/>
+          <rect x="230" y="90" width="40" height="100" fill="#f7f3ed" opacity="0.8"/>
+          <rect x="280" y="90" width="40" height="100" fill="#f7f3ed" opacity="0.6"/>
+          <text x="200" y="225" font-family="serif" font-size="14" fill="#2a241d" text-anchor="middle" font-style="italic">Al-Bustan</text>
+        </svg>
+      </div>
+      <div class="listing-body">
+        <div class="listing-cat">Cultural center</div>
+        <h3>Al-Bustan Seeds of Culture</h3>
+        <div class="listing-ar">البستان</div>
+        <div class="listing-meta">4810 Pine St · classes, performances, summer camp</div>
+        <div class="listing-tags">
+          <span class="tag">Arabic classes</span>
+          <span class="tag">Kids programs</span>
+          <span class="tag">Music & arts</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="archive-section" id="archive">
+  <div class="archive-grid">
+    <div class="archive-text">
+      <h2>The living archive</h2>
+      <p>Places change. Owners retire. Communities move. We're collecting photos, oral histories, and old flyers — what was here before, and what's still here that might not be tomorrow.</p>
+      <p>Have a memory, a photo, or an old menu? We'd love to add it.</p>
+      <a href="#">Browse the archive →</a>
+    </div>
+    <div class="archive-images">
+      <div class="archive-img">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" fill="#d9cfbf"/>
+          <rect x="20" y="30" width="160" height="130" fill="#a89478" opacity="0.5"/>
+          <rect x="40" y="60" width="120" height="80" fill="#8a7d6e" opacity="0.4"/>
+          <text x="100" y="180" font-family="serif" font-size="10" fill="#5c5044" text-anchor="middle" font-style="italic">Bitar's, 1985</text>
+        </svg>
+        <div class="caption">Bitar's Foods · S. 10th St · 1985</div>
+      </div>
+      <div class="archive-img">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" fill="#efe8dc"/>
+          <circle cx="100" cy="90" r="50" fill="#8b3a2f" opacity="0.3"/>
+          <text x="100" y="95" font-family="serif" font-size="32" fill="#8b3a2f" text-anchor="middle">حفلة</text>
+          <text x="100" y="160" font-family="DM Sans, ui-sans-serif" font-size="9" fill="#5c5044" text-anchor="middle">SAT MAY 12 · 1979</text>
+        </svg>
+        <div class="caption">Concert flyer · 1979</div>
+      </div>
+      <div class="archive-img">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="200" fill="#bfb09a"/>
+          <rect x="30" y="40" width="140" height="120" fill="#5c5044" opacity="0.4"/>
+          <rect x="80" y="90" width="40" height="70" fill="#2a241d" opacity="0.5"/>
+          <text x="100" y="185" font-family="serif" font-size="10" fill="#2a241d" text-anchor="middle" font-style="italic">Old St. Maron's</text>
+        </svg>
+        <div class="caption">Old St. Maron's Church · undated</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div>
+      <h2>The week in Arab Philly</h2>
+      <p>A short weekly email rounding up upcoming events, new places added to the map, and active community campaigns.</p>
+      <p class="newsletter-meta">No ads. No tracking. Unsubscribe whenever.</p>
+    </div>
+    <form class="newsletter-form" onsubmit="event.preventDefault();">
+      <input type="email" class="newsletter-input" placeholder="your@email.com" required>
+      <button type="submit" class="newsletter-submit">Subscribe</button>
+      <p class="newsletter-fineprint">We'll send a confirmation email to verify.</p>
+    </form>
+  </div>
+</section>
+
+<section class="contribute">
+  <h2>Built by the community</h2>
+  <p>Know a place we're missing? Spotted incorrect hours? Saw a flyer for an event? Send it our way — by web, by WhatsApp, or by forwarding us a screenshot.</p>
+  <div class="contribute-actions">
+    <a href="#" class="btn btn-primary">Submit a place</a>
+    <a href="#" class="btn">Submit an event</a>
+    <a href="#" class="btn">Suggest a correction</a>
+  </div>
+</section>
+
+<footer>
+  <p>Sahra · سهرة — a non-commercial community project. Free to use, free to contribute.</p>
+  <p>
+    <a href="#">About</a>·
+    <a href="#">Submit</a>·
+    <a href="#">Contact</a>·
+  </p>
+</footer>
+
+</body>
+</html>
